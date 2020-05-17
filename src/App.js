@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {store} from "./store/store";
+import {Products} from "./Products/Products";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    const [state, setState] = useState([]);
+
+    useEffect(()=> {
+        const raw = localStorage.getItem('state') || [];
+        setState(JSON.parse(raw));
+    }, []);
+
+    useEffect(()=> {
+        localStorage.setItem('state', JSON.stringify(state));
+    }, [state]);
+
+    const addItem =(id)=>{
+
+        const index = state.indexOf(id);
+
+        if (index === -1){
+            setState([...state, id])
+        }else {
+            const newList = state.filter(item => item!== id);
+            setState(newList);
+        }
+    };
+
+    console.log(state.length)
+
+    return (
+        <div>
+            <p>{state.length}</p>
+            <ul className="products-container">
+              {store.map(item => <Products addItem={()=> addItem(item.id)} key={item.id} name={item.name} price={item.price} item={item} img={item.img} id={item.id} state={state}/>)}
+            </ul>
+        </div>
   );
 }
 
