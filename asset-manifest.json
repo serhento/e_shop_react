@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/e_shop_react/static/css/main.ffaf31d4.chunk.css",
+    "main.js": "/e_shop_react/static/js/main.1735960b.chunk.js",
+    "main.js.map": "/e_shop_react/static/js/main.1735960b.chunk.js.map",
+    "runtime-main.js": "/e_shop_react/static/js/runtime-main.1a47b6c5.js",
+    "runtime-main.js.map": "/e_shop_react/static/js/runtime-main.1a47b6c5.js.map",
+    "static/js/2.b4c62248.chunk.js": "/e_shop_react/static/js/2.b4c62248.chunk.js",
+    "static/js/2.b4c62248.chunk.js.map": "/e_shop_react/static/js/2.b4c62248.chunk.js.map",
+    "index.html": "/e_shop_react/index.html",
+    "precache-manifest.02d8d45a7beeaecc4cd1a0f2dd48d133.js": "/e_shop_react/precache-manifest.02d8d45a7beeaecc4cd1a0f2dd48d133.js",
+    "service-worker.js": "/e_shop_react/service-worker.js",
+    "static/css/main.ffaf31d4.chunk.css.map": "/e_shop_react/static/css/main.ffaf31d4.chunk.css.map",
+    "static/js/2.b4c62248.chunk.js.LICENSE.txt": "/e_shop_react/static/js/2.b4c62248.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1a47b6c5.js",
+    "static/js/2.b4c62248.chunk.js",
+    "static/css/main.ffaf31d4.chunk.css",
+    "static/js/main.1735960b.chunk.js"
+  ]
+}
