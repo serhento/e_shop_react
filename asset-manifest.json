@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/e_shop_react/static/css/main.74541f9b.chunk.css",
+    "main.css": "/e_shop_react/static/css/main.fd77fcc5.chunk.css",
     "main.js": "/e_shop_react/static/js/main.ba20225b.chunk.js",
     "main.js.map": "/e_shop_react/static/js/main.ba20225b.chunk.js.map",
     "runtime-main.js": "/e_shop_react/static/js/runtime-main.1a47b6c5.js",
@@ -8,16 +8,16 @@
     "static/js/2.0542dff8.chunk.js": "/e_shop_react/static/js/2.0542dff8.chunk.js",
     "static/js/2.0542dff8.chunk.js.map": "/e_shop_react/static/js/2.0542dff8.chunk.js.map",
     "index.html": "/e_shop_react/index.html",
-    "precache-manifest.aa494c399d7d0d65d7fb2cd2cbc13a88.js": "/e_shop_react/precache-manifest.aa494c399d7d0d65d7fb2cd2cbc13a88.js",
+    "precache-manifest.8060957196d622c7d2d7ce39f98a42cf.js": "/e_shop_react/precache-manifest.8060957196d622c7d2d7ce39f98a42cf.js",
     "service-worker.js": "/e_shop_react/service-worker.js",
-    "static/css/main.74541f9b.chunk.css.map": "/e_shop_react/static/css/main.74541f9b.chunk.css.map",
+    "static/css/main.fd77fcc5.chunk.css.map": "/e_shop_react/static/css/main.fd77fcc5.chunk.css.map",
     "static/js/2.0542dff8.chunk.js.LICENSE.txt": "/e_shop_react/static/js/2.0542dff8.chunk.js.LICENSE.txt",
     "static/media/Card.scss": "/e_shop_react/static/media/signs.cad70081.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.1a47b6c5.js",
     "static/js/2.0542dff8.chunk.js",
-    "static/css/main.74541f9b.chunk.css",
+    "static/css/main.fd77fcc5.chunk.css",
     "static/js/main.ba20225b.chunk.js"
   ]
 }
