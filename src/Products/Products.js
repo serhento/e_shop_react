@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Products.scss'
+import {FirebaseContext} from "../store/firebase/firebaseContext";
 
-export const Products = ({item, addItem, name, price, img, id, state}) =>{
+export const Products = ({item, name, price, img, id, productsArray}) =>{
+
+    const firebase = useContext(FirebaseContext);
 
     let active = false;
     let btnName = 'Добавить в корзину';
 
-    state.map(num => {
-        if (num === item.id){
+    productsArray.map(num => {
+        if (num.id === item.id){
             active = true;
             btnName = 'Удалить из корзины';
         }
@@ -22,7 +25,7 @@ export const Products = ({item, addItem, name, price, img, id, state}) =>{
                 <span className="products-element__name">{name}</span>
                 <img className="products-element__img" alt="img"  src={img}/>
                 <span className="products-element__price">{price.toLocaleString()} RUB</span>
-                <button onClick={()=> addItem(id)} className={btnActive}>{btnName}</button>
+                <button onClick={()=> firebase.pushBtn(id)} className={btnActive}>{btnName}</button>
             </li>
         </>
     )

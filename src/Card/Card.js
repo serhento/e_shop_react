@@ -1,13 +1,13 @@
 import React from 'react';
 import './Card.scss';
 
-export const Card =({state, item})=>{
+export const Card =({productsArray, item})=>{
 
     return(
         <>
 
-            {state.map(num => {
-                if (num === item.id){
+            {productsArray.map(num => {
+                if (num.id === item.id){
                     return(
                         <tr key={item.id}>
                             <td className="card-element__name"><span aria-label="rocket" role="img">🎾</span> {item.name}</td>
