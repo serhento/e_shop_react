@@ -8,17 +8,23 @@ export const FirebaseState =({children}) =>{
 
     const initialState = {
         items: [],
-        products: []
+        products: [],
+        loading: false
     };
 
     const [state, dispatch] = useReducer(firebaseReducer, initialState);
+
+    const showLoader =()=> dispatch({type: "SHOW_LOADER"});
+
     const fetchItems = async ()=>{
+        showLoader();
         const res = await axios.get("https://e-shop-react-d0c9b.firebaseio.com/items.json");
         const payload = res.data;
         dispatch({type: "FETCH_ITEMS", payload})
     };
 
     const fetchProducts = async ()=>{
+        showLoader()
         const res = await axios.get("https://e-shop-react-d0c9b.firebaseio.com/products.json");
         const payload = res.data;
         dispatch({type: "FETCH_PRODUCTS", payload})
@@ -56,8 +62,10 @@ export const FirebaseState =({children}) =>{
 
 
     const addProduct =async (id)=>{
+        //showLoader()
         await axios.post("https://e-shop-react-d0c9b.firebaseio.com/products.json", id);
         fetchProducts()
+
     }
 
     const deleteProduct =async (id)=>{
@@ -67,7 +75,7 @@ export const FirebaseState =({children}) =>{
 
     return(
         <FirebaseContext.Provider value={{
-            pushBtn, fetchItems, items: state.items, fetchProducts, products: state.products
+            showLoader, loading: state.loading, pushBtn, fetchItems, items: state.items, fetchProducts, products: state.products
         }}>
 
             {children}

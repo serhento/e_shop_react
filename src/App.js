@@ -3,12 +3,13 @@ import {Products} from "./Products/Products";
 import {Header} from "./Header/Header";
 import {Card} from "./Card/Card";
 import {FirebaseContext} from "./store/firebase/firebaseContext";
+import {Loader} from "./Loader/Loader";
 
 function App() {
 
     const [state, setState] = useState([]);
     const [visible, setVisible] = useState(false);
-    const {items, products, fetchProducts, fetchItems} = useContext(FirebaseContext);
+    const {items, products, fetchProducts, fetchItems, loading} = useContext(FirebaseContext);
     let price = 0;
     let productsArray = [];
 
@@ -49,6 +50,8 @@ function App() {
         <div>
             <Header onClick={()=> setVisible(true)} productsArray={productsArray} state={state}/>
 
+            {loading ? <Loader/> : null}
+
             <ul className="products-container">
                 {items.map(item => <Products addItem={()=> addItem(item.id)} key={item.id} name={item.name} price={item.price} item={item} img={item.img} id={item.id} productsArray={productsArray}/>)}
             </ul>
@@ -66,6 +69,7 @@ function App() {
                 </table>
             </div>
             }
+
         </div>
   );
 }
