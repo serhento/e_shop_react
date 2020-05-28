@@ -3,6 +3,9 @@
   height: 50px;
   padding: var(--spacing-small);
   background-color: var(--color-medium);
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   &-count{
     margin-left: auto;
