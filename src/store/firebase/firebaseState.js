@@ -75,7 +75,7 @@ export const FirebaseState =({children}) =>{
 
     return(
         <FirebaseContext.Provider value={{
-            showLoader, loading: state.loading, pushBtn, fetchItems, items: state.items, fetchProducts, products: state.products
+            showLoader, deleteProduct, loading: state.loading, pushBtn, fetchItems, items: state.items, fetchProducts, products: state.products
         }}>
 
             {children}

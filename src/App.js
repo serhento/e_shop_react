@@ -9,7 +9,7 @@ function App() {
 
     const [state, setState] = useState([]);
     const [visible, setVisible] = useState(false);
-    const {items, products, fetchProducts, fetchItems, loading} = useContext(FirebaseContext);
+    const {items, products, fetchProducts, fetchItems, loading, deleteProduct} = useContext(FirebaseContext);
     let price = 0;
     let productsArray = [];
 
@@ -58,15 +58,15 @@ function App() {
 
             {visible && <div className="card">
                 <div onClick={()=> setVisible(false)} className="card__close"></div>
-                <table>
-                    <tbody>
-                    {items.map(item => <Card key={item.id} productsArray={productsArray} item={item}/>)}
-                    <tr>
-                        <td className="card-element__name"><span aria-label="money" role="img">💳</span> Сумма:</td>
-                        <td className="card-element__price">{price.toLocaleString()} RUB</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div>
+                    <div>
+                    {items.map(item => <Card deleteProduct={deleteProduct} key={item.id} productsArray={productsArray} item={item}/>)}
+                    <div className="card-elements">
+                        <div className="card-element__name"><span aria-label="money" role="img">💳</span> Сумма:</div>
+                        <div className="card-element__price-sum">{price.toLocaleString()} РУБ</div>
+                    </div>
+                    </div>
+                </div>
             </div>
             }
 
