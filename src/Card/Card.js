@@ -17,9 +17,9 @@ export const Card =({productsArray, item, deleteProduct})=>{
                         <div key={item.id} className="card-elements">
                             <div className="card-elements__box">
                                 <div className="card-element__name"><span aria-label="rocket" role="img">🎾</span> {item.name}</div>
-                                <div className="card-element__price">{item.price.toLocaleString()} РУБ</div>
+                                <div className="card-element__price">{item.price.toLocaleString()} RUB</div>
                             </div>
-                            <button onClick={()=>deleteProduct(num.name)} className="card-element__delete" >Удалить</button>
+                            <button onClick={()=>deleteProduct(num.name)} className="card-element__delete" >Delete</button>
                         </div>
                     )
                 }

@@ -62,8 +62,8 @@ function App() {
                     <div>
                     {items.map(item => <Card deleteProduct={deleteProduct} key={item.id} productsArray={productsArray} item={item}/>)}
                     <div className="card-elements">
-                        <div className="card-element__name"><span aria-label="money" role="img">💳</span> Сумма:</div>
-                        <div className="card-element__price-sum">{price.toLocaleString()} РУБ</div>
+                        <div className="card-element__name"><span aria-label="money" role="img">💳</span> Sum:</div>
+                        <div className="card-element__price-sum">{price.toLocaleString()} RUB</div>
                     </div>
                     </div>
                 </div>

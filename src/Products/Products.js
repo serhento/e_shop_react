@@ -7,12 +7,12 @@ export const Products = ({item, name, price, img, id, productsArray}) =>{
     const firebase = useContext(FirebaseContext);
 
     let active = false;
-    let btnName = 'Добавить в корзину';
+    let btnName = 'Add to cart';
 
     productsArray.map(num => {
         if (num.id === item.id){
             active = true;
-            btnName = 'Удалить из корзины';
+            btnName = 'Delete from cart';
         }
         return null;
     });
