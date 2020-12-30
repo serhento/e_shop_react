@@ -5,6 +5,7 @@
   width: 80%;
   max-width: 1200px;
   margin: 80px auto var(--spacing-large) auto;
+  //position: relative;
 }
 
 .products-element{
@@ -12,6 +13,7 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 25px 20px;
+  //background-image: var(--linear-gradient2);
   background-color: var(--color-white);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
@@ -35,19 +37,29 @@
 
   &__btn{
     margin-top: var(--spacing-medium);
+    background-image: var(--linear-gradient2);
     padding: var(--spacing-small) var(--spacing-medium);
     border: 1px solid var(--color-unaccent);
     border-radius: var(--border-radius);
     cursor: pointer;
     outline: none;
-    background: none;
     font-family: inherit;
     font-size: inherit;
+    color: #000;
+
+    &:hover{
+      background: #ff8000;
+    }
 
     &_active{
       border: 1px solid transparent;
-      background-image: var(--linear-gradient);
+      background-image: var(--linear-gradient1);
       opacity: 1;
+      color: #fff;
+
+      &:hover{
+        background-color: #203040;
+      }
     }
   }
 }

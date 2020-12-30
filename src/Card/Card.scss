@@ -34,21 +34,40 @@
     color: var(--color-unaccent);
   }
 
-  &__close{
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    top: 20px;
-    right: 20px;
-    background-image: url("../img/signs.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
+  &-element__delete{
+    background-color: #203040;
+    border: none;
+    color: #ffffff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
     cursor: pointer;
-    opacity: 0.5;
+    font-size: 1rem;
 
     &:hover{
-      opacity: 1;
+      background-color: #ff8000;
+      color: #000000;
+    }
+  }
+
+  &__close{
+    border: none;
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover{
+      svg{
+        fill: #ff8000;
+      }
+    }
+
+    svg{
+      width: 2rem;
+      fill: #203040;
     }
   }
 }

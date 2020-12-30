@@ -4,11 +4,13 @@ import {Header} from "./Header/Header";
 import {Card} from "./Card/Card";
 import {FirebaseContext} from "./store/firebase/firebaseContext";
 import {Loader} from "./Loader/Loader";
+import {SideBar} from "./SideBar/SideBar";
 
 function App() {
 
     const [state, setState] = useState([]);
     const [visible, setVisible] = useState(false);
+    const [visibleSideBar, setVisibleSideBar] = useState(false);
     const {items, products, fetchProducts, fetchItems, loading, deleteProduct} = useContext(FirebaseContext);
     let price = 0;
     let productsArray = [];
@@ -48,7 +50,12 @@ function App() {
 
     return (
         <div>
-            <Header onClick={()=> setVisible(true)} productsArray={productsArray} state={state}/>
+
+            {visibleSideBar && <div className="sidebar">
+                <SideBar onClick={()=>setVisibleSideBar(false)}/>
+            </div>}
+
+            <Header onClick={()=> setVisible(true)}  onPress={()=> setVisibleSideBar(true)} productsArray={productsArray} state={state}/>
 
             {loading ? <Loader/> : null}
 
@@ -57,7 +64,9 @@ function App() {
             </ul>
 
             {visible && <div className="card">
-                <div onClick={()=> setVisible(false)} className="card__close"></div>
+                <button onClick={()=> setVisible(false)} className="card__close">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.293,18.293,10.586,12,4.293,5.707A1,1,0,0,1,5.707,4.293L12,10.586l6.293-6.293a1,1,0,1,1,1.414,1.414L13.414,12l6.293,6.293a1,1,0,1,1-1.414,1.414L12,13.414,5.707,19.707a1,1,0,0,1-1.414-1.414Z"/></svg>
+                </button>
                 <div>
                     <div>
                     {items.map(item => <Card deleteProduct={deleteProduct} key={item.id} productsArray={productsArray} item={item}/>)}

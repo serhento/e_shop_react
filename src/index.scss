@@ -9,7 +9,8 @@
   --spacing-large: 30px;
 
   --border-radius: 3px;
-  --linear-gradient: linear-gradient(to right, #0db1f1, #0ff8bb, #0db1f1);
+  --linear-gradient1: linear-gradient(to right, #203040, #29596B, #203040);
+  --linear-gradient2: linear-gradient(to right, #ff8000, #f8f39e, #ff8000);
   --box-shadow:
           0 16px 24px 2px rgba(33,37,41,.02),
           0 6px 30px 5px rgba(33,37,41,.04),
@@ -18,6 +19,8 @@
 
 *{
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
 body{
