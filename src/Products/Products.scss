@@ -4,8 +4,7 @@
   grid-gap: 45px;
   width: 80%;
   max-width: 1200px;
-  margin: 80px auto var(--spacing-large) auto;
-  //position: relative;
+  margin: 25px auto var(--spacing-large) auto;
 }
 
 .products-element{
@@ -17,6 +16,11 @@
   background-color: var(--color-white);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
+
+  a{
+    text-decoration: none;
+    color: #203040;
+  }
 
   &__name{
     margin-bottom: auto;

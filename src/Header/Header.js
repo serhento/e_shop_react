@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import './Header.scss'
 
 export const Header =({onClick, productsArray, onPress})=>{
@@ -8,7 +9,7 @@ export const Header =({onClick, productsArray, onPress})=>{
                 <button onClick={onPress}>
                     &#9776;
                 </button>
-                <a href="index.html">Tennis Shop</a>
+                <Link to="/e_shop_react">Tennis Shop</Link>
             </div>
             <div onClick={onClick} className="header-count">
                 <span aria-label="basket" role="img">🛒</span>
