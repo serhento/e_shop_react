@@ -43,6 +43,9 @@ export const Product=(props)=>{
                             {/*    {product.rating} Stars ({product.numReviews} Reviews)*/}
                             {/*</li>*/}
                             <li>
+                                Brand: <Link to="#"><b>{product.brand}</b></Link>
+                            </li>
+                            <li>
                                 Price: <b>{product.price} RUB</b>
                             </li>
                             {/*<li>*/}
@@ -58,6 +61,9 @@ export const Product=(props)=>{
                         <ul>
                             <li>
                                 Price: {product.price} RUB
+                            </li>
+                            <li>
+                                Brand: <Link to="#"><b>{product.brand}</b></Link>
                             </li>
                             <li>
                                 Status: {product.status}

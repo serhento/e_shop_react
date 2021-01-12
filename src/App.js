@@ -18,6 +18,8 @@ function App() {
     let price = 0;
     let productsArray = [];
 
+    console.log(items)
+
     useEffect(()=> {
        fetchItems();
        fetchProducts()

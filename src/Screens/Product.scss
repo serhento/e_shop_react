@@ -1,5 +1,9 @@
 .product{
 
+  a{
+    color: #203040;
+  }
+
   &-details{
     display: flex;
     justify-content: space-between;
@@ -55,6 +59,7 @@
       img{
         max-width: 60rem;
         width: 40rem;
+        border: 0.3rem solid #203040;
       }
     }
 
