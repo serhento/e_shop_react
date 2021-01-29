@@ -48,8 +48,6 @@ export const FirebaseState =({children}) =>{
                                 deleteProduct(key)
                             }
                         })
-                    }else {
-
                     }
                 })
 

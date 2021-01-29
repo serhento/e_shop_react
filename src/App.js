@@ -1,27 +1,35 @@
 import React, {useEffect, useState, useContext} from 'react';
-import {Products} from "./Products/Products";
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import {Header} from "./Header/Header";
 import {Card} from "./Card/Card";
 import {FirebaseContext} from "./store/firebase/firebaseContext";
-import {Loader} from "./Loader/Loader";
 import {SideBar} from "./SideBar/SideBar";
 import {Home} from "./Screens/Home";
 import {Product} from "./Screens/Product";
+import {LoginPage} from "./Login/LoginPage";
 
 function App() {
 
+    const adminUser = {
+        email: "admin@admin.com",
+        password: "admin123"
+    };
+    const [signedName, setSignedName] = useState("Log in")
+    const [user, setUser] = useState({name: "", email: ""});
+    const [error, setError] = useState("");
     const [state, setState] = useState([]);
+    const [userLogged, setUserLogged] = useState(false);
     const [visible, setVisible] = useState(false);
     const [visibleSideBar, setVisibleSideBar] = useState(false);
+    const [visibleLogin, setVisibleLogin] = useState(false);
     const {items, products, fetchProducts, fetchItems, loading, deleteProduct} = useContext(FirebaseContext);
     let price = 0;
     let productsArray = [];
 
-    console.log(items)
+    console.log(items);
 
     useEffect(()=> {
-       fetchItems();
+      // fetchItems();
        fetchProducts()
         // eslint-disable-next-line
     }, []);
@@ -32,18 +40,6 @@ function App() {
         })
     }
 
-    // const addItem =(id)=>{
-    //
-    //     const index = state.indexOf(id);
-    //
-    //     if (index === -1){
-    //         setState([...state, id])
-    //     }else {
-    //         const newList = state.filter(item => item!== id);
-    //         setState(newList);
-    //     }
-    // };
-
     items.map(item=> {
         productsArray.map(num =>{
                 if (num.id === item.id){
@@ -53,50 +49,72 @@ function App() {
         return null
     });
 
+    const Login = details =>{
+        console.log(details);
+        if (details.email === adminUser.email && details.password === adminUser.password){
+            console.log("Logged in")
+            setUser({
+                name: details.name,
+                email: details.email
+            });
+            setSignedName(details.name);
+            setVisibleLogin(false);
+            setUserLogged(true);
+        }else{
+            setError("Details do not match")
+        }
+    };
+
+    const Logout = () =>{
+        setUser({name: "", email: ""});
+        setSignedName("Log in");
+        setVisibleLogin(false);
+        setUserLogged(false);
+    };
+
     return (
         <BrowserRouter>
 
             <div>
                 {/***********Sidebar***********/}
-                {visibleSideBar && <div className="sidebar">
-                    <SideBar onClick={()=>setVisibleSideBar(false)}/>
-                </div>}
+                {visibleSideBar && <SideBar onClick={()=>setVisibleSideBar(false)}/>}
 
                 {/***********Header***********/}
-                <Header onClick={()=> setVisible(true)}  onPress={()=> setVisibleSideBar(true)} productsArray={productsArray} state={state}/>
-
-                {/***********Loader***********/}
-                {loading ? <Loader/> : null}
-
+                <Header
+                    userLogged={userLogged}
+                    signedName={signedName}
+                    setVisibleLogin={setVisibleLogin}
+                    onClick={()=> setVisible(true)}
+                    onPress={()=> setVisibleSideBar(true)}
+                    productsArray={productsArray} state={state}
+                />
 
                 {/***********Products***********/}
-                <div className="products">
+                {userLogged && <div className="products">
 
                     <Route path="/e_shop_react" exact component={Home}/>
                     <Route path="/product/:id" component={Product}/>
 
-                    {/*<Home/>*/}
-                    {/*<ul className="products-container">*/}
-                    {/*    {items.map(item => <Products addItem={()=> addItem(item.id)} key={item.id} name={item.name} price={item.price} item={item} img={item.img} id={item.id} productsArray={productsArray}/>)}*/}
-                    {/*</ul>*/}
-                </div>
+                </div>}
+
+                {!userLogged && <div className="welcome">
+                    <h1>Please Log in</h1>
+                    <p>Name: Your name</p>
+                    <p>Email: admin@admin.com</p>
+                    <p>Password: admin123</p>
+                </div>}
 
                 {/***********Cart***********/}
-                {visible && <div className="card">
-                    <button onClick={()=> setVisible(false)} className="card__close">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.293,18.293,10.586,12,4.293,5.707A1,1,0,0,1,5.707,4.293L12,10.586l6.293-6.293a1,1,0,1,1,1.414,1.414L13.414,12l6.293,6.293a1,1,0,1,1-1.414,1.414L12,13.414,5.707,19.707a1,1,0,0,1-1.414-1.414Z"/></svg>
-                    </button>
-                    <div>
-                        <div>
-                            {items.map(item => <Card deleteProduct={deleteProduct} key={item.id} productsArray={productsArray} item={item}/>)}
-                            <div className="card-elements">
-                                <div className="card-element__name"><span aria-label="money" role="img">💳</span> Sum:</div>
-                                <div className="card-element__price-sum">{price.toLocaleString()} RUB</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                }
+                {visible && <Card
+                    price={price}
+                    items={items}
+                    setVisible={setVisible}
+                    deleteProduct={deleteProduct}
+                    productsArray={productsArray}
+                />}
+
+                {/***********Login*************/}
+                {visibleLogin && <LoginPage Logout={Logout} user={user} Login={Login} error={error}/>}
 
             </div>
 

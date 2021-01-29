@@ -1,14 +1,14 @@
-import React, {useContext, useState} from 'react';
-import {Link} from "react-router-dom";
+import React, {useContext, useEffect, useState} from 'react';
 import {Products} from "../Products/Products";
 import {FirebaseContext} from "../store/firebase/firebaseContext";
+import {Loader} from "../Loader/Loader";
 
 
-export const Home=(props)=>{
+export const Home=()=>{
 
     let productsArray = [];
     let price = 0;
-    const {items, products, fetchProducts, fetchItems, loading, deleteProduct} = useContext(FirebaseContext);
+    const {items, products, loading, fetchItems} = useContext(FirebaseContext);
 
     const [state, setState] = useState([]);
 
@@ -17,6 +17,11 @@ export const Home=(props)=>{
             return {name: key, id: value}
         })
     }
+
+    useEffect(()=> {
+        fetchItems();
+        // eslint-disable-next-line
+    }, []);
 
     const addItem =(id)=>{
 
@@ -41,32 +46,11 @@ export const Home=(props)=>{
 
     return(
         <ul className="products-container">
-            {items.map(item => <Products addItem={()=> addItem(item.id)} key={item.id} name={item.name} price={item.price} item={item} img={item.img} id={item.id} productsArray={productsArray}/>)}
+            {loading ?
+                <Loader/> :
+                items.map(item => <Products addItem={()=> addItem(item.id)} key={item.id} name={item.name} price={item.price} item={item} img={item.img} id={item.id} productsArray={productsArray}
+                />)
+            }
         </ul>
     )
 };
-
-
-{/*<ul className="products">*/}
-
-{/*    {*/}
-{/*        data.products.map(product => (*/}
-{/*                <li>*/}
-{/*                    <div className="product">*/}
-
-{/*                        <Link to={`/product/${product.id}`}>*/}
-{/*                            <img className="product-img" src={require('../assets/img/d1.jpg').default} alt="product"/>*/}
-{/*                        </Link>*/}
-{/*                        <div className="product-name">*/}
-{/*                            <Link to={`/product/${product.id}`}>{product.name}</Link>*/}
-{/*                        </div>*/}
-{/*                        <div className="product-brand">{product.brand}</div>*/}
-{/*                        <div className="product-price">${product.price}</div>*/}
-{/*                        <div className="product-rating">{product.rating} Stars ({product.numReviews})</div>*/}
-{/*                    </div>*/}
-{/*                </li>*/}
-{/*            )*/}
-{/*        )*/}
-{/*    }*/}
-
-{/*</ul>*/}

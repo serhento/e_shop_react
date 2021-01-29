@@ -9,6 +9,15 @@
   top: 0;
   width: 100%;
 
+  &-signin{
+    color: #fff;
+    cursor: pointer;
+
+    &:hover{
+      color: #ff8000;
+    }
+  }
+
   &-brand{
     a{
       text-decoration: none;

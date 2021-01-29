@@ -1,0 +1,35 @@
+.form{
+  width: 25rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  margin: auto;
+  padding: var(--spacing-large);
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
+
+  &-inner{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    &-btn {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    &-error{
+      color: #c30000;
+    }
+
+    &-group{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+  }
+}

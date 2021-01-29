@@ -2,21 +2,10 @@ import React, {useContext} from 'react';
 import {FirebaseContext} from "../store/firebase/firebaseContext";
 import {Link} from "react-router-dom";
 import './Product.scss';
-// import {data} from '../assets/data';
 
 export const Product=(props)=>{
 
-    //console.log(props)
     const {items} = useContext(FirebaseContext);
-
-    // console.log(items)
-    // console.log(typeof props.match.params.id)
-
-    // items.map(item=>{
-    //     if (item.id === props.match.params.id) {
-    //         console.log(item)
-    //     }
-    // })
 
     const product = items.find(item => item.id === Number(props.match.params.id));
 
@@ -39,21 +28,14 @@ export const Product=(props)=>{
                             <li>
                                 <h4>{product.name}</h4>
                             </li>
-                            {/*<li>*/}
-                            {/*    {product.rating} Stars ({product.numReviews} Reviews)*/}
-                            {/*</li>*/}
+
                             <li>
                                 Brand: <Link to="#"><b>{product.brand}</b></Link>
                             </li>
                             <li>
                                 Price: <b>{product.price} RUB</b>
                             </li>
-                            {/*<li>*/}
-                            {/*    Description:*/}
-                            {/*    <div>*/}
-                            {/*        {product.desc}*/}
-                            {/*    </div>*/}
-                            {/*</li>*/}
+
                         </ul>
                     </div>
 

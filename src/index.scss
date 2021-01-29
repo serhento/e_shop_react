@@ -30,3 +30,10 @@ body{
   line-height: 1.7;
   background-color: var(--color-light);
 }
+
+.welcome{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
